@@ -26,6 +26,8 @@ Before getting started, ensure the following:
 ```bash
 git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
+```
+
 
 ### 2. Sync Raspberry Pi Sysroot to Host
 
@@ -33,6 +35,7 @@ cd your-repo-name
 sudo rsync -avz --progress --ignore-existing --rsync-path="sudo rsync" pi@<raspberry-pi-ip>:/lib ~/raspi/sysroot
 sudo rsync -avz --progress --ignore-existing --rsync-path="sudo rsync" pi@<raspberry-pi-ip>:/usr ~/raspi/sysroot
 sudo rsync -avz --progress --ignore-existing --rsync-path="sudo rsync" pi@<raspberry-pi-ip>:/opt ~/raspi/sysroot
+```
 
 Replace <raspberry-pi-ip> with the Raspberry Pi's IP address.
 
@@ -41,12 +44,13 @@ For 32-bit Raspberry Pi OS:
 
 ```bash
 sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+``` 
 
 For 64-bit Raspberry Pi OS:
 
 ```bash
 sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-
+```
 ### 4. Cross-Compile a Test Program
 
 Create a simple test program (e.g., test_program.c):
@@ -58,18 +62,18 @@ int main() {
     printf("Hello from Raspberry Pi!\\n");
     return 0;
 }' > test_program.c
-
+```
 
 Compile for 32-bit Raspberry Pi OS:
 
 ```bash
 arm-linux-gnueabihf-gcc --sysroot=~/raspi/sysroot -o test_program test_program.c
-
+```
 Compile for 64-bit Raspberry Pi OS:
 
 ```bash
 aarch64-linux-gnu-gcc --sysroot=~/raspi/sysroot -o test_program test_program.c
-
+```
 ### 5. Transfer and Run the Program on the Raspberry Pi
 
 scp test_program pi@<raspberry-pi-ip>:/home/pi/
@@ -101,9 +105,9 @@ make
 Troubleshooting
 
     Permission Errors: If you encounter permission errors during rsync, use the --rsync-path="sudo rsync" flag to ensure proper permissions.
-
+```bash
     sudo rsync -avz --progress --ignore-existing --rsync-path="sudo rsync" pi@<raspberry-pi-ip>:/lib ~/raspi/sysroot
-
+```
     Library Not Found: Ensure that the sysroot directory contains all required libraries and headers by checking if the rsync commands copied everything correctly.
 
     Connection Issues: If rsync or ssh commands fail, verify the following:
