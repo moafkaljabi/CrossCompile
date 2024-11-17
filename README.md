@@ -1,49 +1,29 @@
-# CrossCompile
-Cross Compiling applications
+# Cross-Compiling for Raspberry Pi
 
+This repository provides step-by-step instructions on how to set up and perform cross-compilation from a host machine (e.g., Linux/MacOS) to a Raspberry Pi. Cross-compiling allows you to build applications on your powerful host machine and deploy them to the Raspberry Pi, saving time and resources.
 
-## Project Overview
-CrossCompile is a project built with Qt, designed to control and monitor various aspects of a vehicle. It includes interactive elements and real-time data updates, providing a responsive interface for IoT-enabled vehicle functions.
+## Prerequisites
 
-## Features
-- **Dashboard**: Displays vehicle metrics like speed, fuel level, temperature, etc.
-- **Controls**: Allows users to interact with vehicle systems, such as starting/stopping the engine, adjusting climate control, and more.
-- **Real-time Updates**: Leverages WebSockets (or similar) for live updates, ensuring the UI reflects current vehicle data instantly.
-- **Cross-Platform**: Designed with Qt to run on multiple platforms seamlessly.
+Before getting started, ensure the following:
 
-## Technologies Used
-- **Qt QML / Qt Creator**: For designing and implementing the UI.
-- **C++**: Core programming language for application logic and backend integration.
-## Installation and Setup
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/MOAFKALJABI/VehicleUI.git
-    ```
-2. **Build the Project**:
-   - Open the project in Qt Creator and build.
-   - Alternatively, use `qmake` and `make` if building from the terminal:
-     ```bash
-     cd VehicleUI
-     qmake
-     make
-     ```
-3. **Run the Application**:
-    ```bash
-    ./VehicleUI
-    ```
+1. **Host Machine**:
+   - A Linux or macOS system with necessary tools installed (`gcc`, `g++`, `cmake`, etc.).
+   - `rsync` for synchronizing files.
+   - A cross-compiler toolchain for the Raspberry Pi (e.g., `arm-linux-gnueabihf`).
 
-## Usage
-- **User Login**: Sign in to access personalized features.
-- **Dashboard**: View and monitor live data.
-- **Settings**: Customize alerts, themes, and other preferences.
+2. **Target (Raspberry Pi)**:
+   - A Raspberry Pi running a Linux distribution (e.g., Raspbian, Raspberry Pi OS).
+   - SSH access to the Raspberry Pi.
+   - Sufficient space for libraries and files.
 
-## Contributing
-Feel free to submit issues or pull requests. For major changes, please open a discussion first to communicate what you'd like to change.
+3. **Network Connection**:
+   - Both the host and the Raspberry Pi should be on the same network, and SSH should be enabled on the Raspberry Pi.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Steps
 
----
+### 1. Clone or Download This Repository
+Clone this repository to get all required scripts and files for the process:
 
-### Contact
-For questions, please reach out to Moafk Aljabi at [mwa﻿fak_sh@hotmail.com](mailto:mwa﻿fak_sh@hotmail.com).
+```bash
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
